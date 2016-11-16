@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>First HighCharts Chart</title>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <link href="css/bar_chart.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="container"></div>
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function() {
+        "use strict";
+
+        Highcharts.setOptions({
+          chart: {
+            backgroundColor: {
+              linearGradient: [0, 0, 500, 500],
+              stops: [
+                  [0, 'rgb(255, 255, 255)'],
+                  [1, 'rgb(240, 240, 255)']
+                  ]
+            },
+            borderWidth: 2,
+            plotBackgroundColor: 'rgba(255, 255, 255, .9)',
+            plotShadow: true,
+            plotBorderWidth: 1
+          }
+        });
+
+        var chart1 = Highcharts.chart({
+          chart: {
+            renderTo: 'container',
+            type: 'bar'
+          },
+          title: {
+            text: 'Fruit Consumption'
+          },
+          subtitle: {
+            text: 'By Jane and John'
+          },
+          xAxis: {
+            categories: ['Apples', 'Bananas', 'Oranges'],
+          },
+          yAxis: {
+            type: 'linear',
+            title: {
+              text: 'Fruit eaten'
+            },
+            tickInterval: 1,
+            labels: {
+              formatter: function() {
+                return this.value + 'oz.';
+              },
+              rotation: -45
+            }
+          },
+          series: [{
+            name: 'Jane', // for hover and legend
+            data: [1, 0, 4]
+          }, {
+            name: 'John',
+            data: [5, 7, 3]
+          }]
+        });
+      });
+    </script>
+  </body>
+</html>
