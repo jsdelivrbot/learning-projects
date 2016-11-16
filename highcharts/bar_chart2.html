@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>First HighCharts Chart</title>
+    <link href="css/bar_chart.css" type="text/css" rel="stylesheet" />
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function() {
+        "use strict";
+
+        Highcharts.setOptions({
+          chart: {
+            backgroundColor: {
+              linearGradient: [0, 0, 500, 500],
+              stops: [
+                  [0, 'rgb(255, 255, 255)'],
+                  [1, 'rgb(240, 240, 255)']
+                  ]
+            },
+            borderWidth: 2,
+            plotBackgroundColor: 'rgba(255, 255, 255, .9)',
+            plotShadow: true,
+            plotBorderWidth: 1,
+            xAxis: {
+              type: 'category'
+            },
+            legend: {
+              enabled: false
+            }
+          }
+        });
+
+        var chart = Highcharts.chart('container', {
+          chart: {
+            type: 'column'
+          },
+          title: {
+            text: 'Composition of Animals at the Zoo'
+          },
+          xAxis: {
+            type: 'category'
+          },
+          series: [{
+            name: 'Things',
+            colorByPoint: true,
+            data: [{
+              name: 'Monkeys',
+              y: 7,
+              drilldown: 'monkeys'
+            }, {
+              name: 'Equinae',
+              y: 18,
+              drilldown: 'equinae'
+            }, {
+              name: 'Birds',
+              y: 14,
+              drilldown: 'birds'
+            }]
+          }],
+          drilldown: {
+            series: [{
+              id: 'monkeys',
+              data: [
+                ['Chimpanzees', 3],
+                ['Gorillas', 2],
+                ['Mandrills', 1] ]
+            }, {
+              id: 'equinae',
+              data: [
+                ['Horses', 12],
+                ['Zebras', 3],
+                ['Donkeys', 3] ]
+            }, {
+              id: 'birds',
+              data: [
+                ['Toucans', 3],
+                ['Flamingoes', 9],
+                ['Parrots', 2] ]
+            }]
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
