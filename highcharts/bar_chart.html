@@ -65,7 +65,17 @@
           }, {
             name: 'John',
             data: [5, 7, 3]
-          }]
+          }],
+          tooltip: {
+            useHTML: true,
+            formatter: function() {
+              return 'The value for <b>' + this.x + '</b> is <b>' + this.y + '</b>, in series '+ this.series.name;
+            },
+            backgroundColor: '#FCFFC5',
+            borderColor: '#000',
+            borderRadius: 10,
+            borderWidth: 3
+          }
         });
       });
     </script>
