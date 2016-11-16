@@ -8,6 +8,8 @@
   </head>
   <body>
     <div id="container"></div>
+    <div id="report"></div>
+    <button id="button" class="autocompare">Add plot bands</button>
     <script
   src="https://code.jquery.com/jquery-3.1.1.js"
   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
@@ -15,6 +17,9 @@
     <script>
       $(document).ready(function() {
         "use strict";
+        var $report = $('#report');
+        var hasPlotBands = false;
+        var $button = $('#button');
 
         Highcharts.setOptions({
           chart: {
@@ -27,7 +32,7 @@
             },
             borderWidth: 2,
             plotBackgroundColor: 'rgba(255, 255, 255, .9)',
-            plotShadow: true,
+            plotShadow: false,
             plotBorderWidth: 1
           }
         });
@@ -40,13 +45,22 @@
             crosshairs: [true]
           },
           xAxis: {
-            type: 'datetime'
+            type: 'datetime',
+            plotLines: [{
+              color: 'red',
+              dashStyle: 'longdashdot',
+              value: Date.UTC(2010, 0, 4),
+              width: 2
+            }]
           },
-          zoneAxis: 'x',
-          zones: [{
-            value: 8 },
-            { dashStyle: 'dot'
-          }],
+          yAxis: {
+            plotLines: [{
+              color: 'red',
+              dashStyle: 'dot',
+              value: 150,
+              width: 2
+            }]
+          },
           plotOptions: {
             series: {
               allowPointSelect: true,
@@ -111,6 +125,45 @@
               dashStyle: 'longdash'
             }],
             lineWidth: 2
+        });
+
+        $button.click(function() {
+          if (!hasPlotBands) {
+            chart.xAxis[0].addPlotBand({
+              color: 'rgba(198, 255, 0, .2)',
+              from: Date.UTC(2010, 0, 2),
+              to: Date.UTC(2010, 0, 3),
+              label: {
+                text: 'I am a label.',
+                align: 'left',
+                x: +10
+              },
+              events: {
+                click: function(e) {
+                  $report.html(e.type);
+                },
+                mouseover: function(e) {
+                  $report.html(e.type);
+                },
+                mouseout: function(e) {
+                  $report.html(e.type);
+                }
+              },
+              id: 'plotband-1'
+            });
+            chart.yAxis[0].addPlotBand({
+              color: 'rgba(198, 255, 0, .4)',
+              from: 50,
+              to: 70,
+              id: 'plotband-2'
+            });
+            $button.html('Remove plot bands');
+          } else {
+            chart.xAxis[0].removePlotBand('plotband-1');
+            chart.yAxis[0].removePlotBand('plotband-2');
+            $button.html('Add plot bands');
+          }
+          hasPlotBands = !hasPlotBands;
         });
 
         var selectedPoints = chart.getSelectedPoints();
