@@ -42,7 +42,8 @@
             renderTo: 'container'
           },
           tooltip: {
-            crosshairs: [true]
+            crosshairs: [true],
+            pointFormat: "Value: {point.y:.0f} mm",
           },
           xAxis: {
             type: 'datetime',
@@ -51,7 +52,11 @@
               dashStyle: 'longdashdot',
               value: Date.UTC(2010, 0, 4),
               width: 2
-            }]
+            }],
+            labels: {
+              format: '{value:%m-%d}',
+              rotation: -45
+            }
           },
           yAxis: {
             plotLines: [{
