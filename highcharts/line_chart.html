@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>First HighCharts Chart</title>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <link href="css/bar_chart.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="container"></div>
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function() {
+        "use strict";
+
+        Highcharts.setOptions({
+          chart: {
+            backgroundColor: {
+              linearGradient: [0, 0, 500, 500],
+              stops: [
+                  [0, 'rgb(255, 255, 255)'],
+                  [1, 'rgb(240, 240, 255)']
+                  ]
+            },
+            borderWidth: 2,
+            plotBackgroundColor: 'rgba(255, 255, 255, .9)',
+            plotShadow: true,
+            plotBorderWidth: 1
+          }
+        });
+
+        var chart = new Highcharts.Chart({
+          chart: {
+            renderTo: 'container'
+          },
+          xAxis: {
+            type: 'datetime'
+          },
+          zoneAxis: 'x',
+          zones: [{
+            value: 8 },
+            { dashStyle: 'dot'
+          }],
+          plotOptions: {
+            series: {
+              allowPointSelect: true,
+              marker: {
+                fillColor: null,
+                lineWidth: 2,
+                lineColor: null
+              },
+              dataLabels: {
+                enabled: true,
+                color: '#FFF',
+                borderRadius: 5,
+                backgroundColor: '#242424',
+                borderWidth: 1,
+                borderColor: '#8f9679',
+                y: -5
+              },
+            pointStart: Date.UTC(2010, 0, 1),
+            pointInterval: 3600 * 1000 * 24 // one day
+            }
+          },
+          series:
+            [{
+              name: "Tokyo",
+              data: [
+                29.9,
+                71.5,
+                106.4,
+                { y: 216.4,
+                  color: '#BF0B23' },
+                { y: 194.1,
+                  marker: {
+                    fillColor: '#FFF',
+                    lineWidth: 2,
+                    lineColor: '#BF0B23' } }
+              ],
+              dashStyle: 'shortdashdot',
+              zones: [{
+               value: 100,
+               color: '#f7a35c'
+              }, {
+               value: 200,
+               color: '#7cb5ec'
+              }, {
+               color: '#90ed7d'
+              }]
+            },
+            {
+              name: "London",
+              data: [
+                59.9,
+                101.5,
+                136.4,
+                { y: 246.4,
+                  color: '#BF0B23' },
+                { y: 224.1,
+                  marker: {
+                    fillColor: '#FFF',
+                    lineWidth: 2,
+                    lineColor: '#BF0B23' } }
+              ],
+              dashStyle: 'longdash'
+            }],
+            lineWidth: 2
+        });
+
+        var selectedPoints = chart.getSelectedPoints();
+        console.log(selectedPoints);
+
+      });
+    </script>
+  </body>
+</html>
