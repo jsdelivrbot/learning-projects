@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Binding React Methods</title>
+</head>
+<body>
+
+	<script>
+
+	// ES6 introduced new class syntax used for creating React component classes. Function context calls within ES6 classes follow same principles as rest of JS.
+
+	// This means that:
+
+	class Foo {
+		constructor() {
+			this.x = 2;
+			this.y = 4;
+		}
+
+		bar() {
+			// ...
+		}
+
+		baz() {
+			// ...
+		}
+	}
+
+	// is roughly the same as:
+
+	function Foo() {
+		this.x = 2;
+		this.y = 4;
+
+		this.bar = function() { //... };
+		this.baz = function() { //... };
+	}
+
+	// When React.createClass was used, binding problem was non-existent because all methods defined on an object passed to React.createClass were automatically bound.
+	// IN ES6 you must bind your methods manually (event handlers and functions passed down as properties [callbacks])
+	// React assumes you have render method within component class. While rendering, component is instantiated from class by using `new` method. Since component extends from React.Component, it inherits setState and forceUpdate functions.
+	// May have component lifecycle methods called under hood with .componentDidUpdate() - `this` is properly binded to component instance.
+	// Must have render method - also called with method pattern.
+
+	// Event handlers passed as properties like onChange or onClick can come from many sources
+	// Therefore, best place to bind them is in constructor.
+
+	class InputExample extends React.Component {
+		constructor(props) {
+			super(props);
+
+			this.state = { text: '' };
+
+			this.change = this.change.bind(this);
+		}
+
+		change(ev) {
+			this.setState({ text: ev.target.value });
+		}
+
+		render() {
+			let { text } = this.state;
+			return (
+				<input type="text" value={text} onChange={this.change} />
+			);
+		}
+	}
+
+	// Arrow functions always get the context from where they have been defined.
+
+	change = (ev) => this.setState({ text: ev.target.value }); // is equivalent to
+
+	var that = this;
+	change = function(ev) { return that.setState({ text: ev.target.value }); };
+
+	// Final refactored result
+
+	class InputExample extends React.Component {
+		state = { text: '' };
+		change = (ev) => this.setState({text: ev.target.value});
+
+		render() {
+			let {text} = this.state;
+			return (<input type="text" value={text} onChange={this.change} />);
+		}
+	}
+
+	</script>
+</body>
+</html>
