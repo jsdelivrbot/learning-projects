@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Binding Methods</title>
+</head>
+<body>
+
+	<script>
+
+	// Why and how to bind methods in React component classes
+	// reactkungfu.com/2015/07/why-and-how-to-bind-methods-in-your-react-component-classes/
+
+	// Four patterns of invoking functions that define context of the function being called:
+
+	// FUNCTION INVOCATION PATTERN
+
+		// If there are no dots in your function call, your context is likely to be `window`
+
+		var func = function() {
+			// ...
+		};
+
+		func(); // Sets context `(this)` to global var of environment on which JS operates. i.e. `window`
+
+		var unicorns = {
+			func: function() {
+				// ...
+			}
+		};
+
+		var fun = unicorns.func;
+		fun();
+
+		// `object.func` function is method of unicorns object. Since JS treats functions like every other value, it can be assigned to the variable. Since context binding is determined by the way you CALL this function, context changes to `window` global variable.
+
+	// METHOD INVOCATION PATTERN
+
+		// If there are dots in your function call, your function context will be the right-most element of your dots chain.
+		// If function is defined within an object, calling it directly from object sets context to the object on which it is being called.
+
+		var frog = {
+			RUN_SOUND: "POP!!",
+			run: function() {
+				return this.RUN_SOUND;
+			}
+		};
+
+		frog.run() // returns "POP!!" since this points to `frog` object.
+		var runningFun = frog.run;
+		runningFun(); // returns `undefined` since this points to the `window`
+
+	// CONSTRUCTOR INVOCATION PATTERN
+
+		// Every time you see a `new` followed by a function name (constructor), your `this` will point to a newly created empty object.
+
+		function Wizard() {
+			this.castSpell = function() { 
+				return "KABOOM!"; 
+			}
+		}
+
+		var merlin = new Wizard(); // set to empty object, returns `this` implicitly.
+		merlin.castSpell(); // returns "KABOOM!"
+
+	// APPLY INVOCATION PATTERN
+
+		// When you have a reference of the function, you can call the function with context provided by you. Use one of two methods:
+			// `call` = takes context as first argument and other arguments and passed to function being called as normal
+			// `apply` = takes context as first argument and array of other arguments 
+
+		function addAndSetX(a, b) {
+			this.x += a + b;
+		}
+
+		var obj1 = { x: 1, y: 2 };
+
+		addAndSetX.call(obj1, 1, 1);
+		addAndSetX.apply(obj1, [1,1]); // .apply equivalent
+
+		// BINDING FUNCTIONS
+
+			// Bounded function in JS is a function that is bounded to given context. No matter how you call it, context will stay the same. Only exception is `new` operator--always returns a new context.
+			// Uses .bind method. Takes context you want to bind as first argument, and rest of arguments are passed to your function. Returns bounded function as result.
+
+			function add(x,y) {
+				this.result += x + y;
+			}
+
+			var computation1 = { result: 0 };
+			var boundedAdd = add.bind(computation1);
+
+			boundedAdd(1,2); // `this` is set to computation1.
+			// computation1 after call: { result: 3 }
+
+			var boundedAddPlusTwo = add.bind(computation1, 2);
+			boundedAddPlusTwo(4); // computation1 after call: { result: 9 }
+
+			// Bounded functions can't be changed even when using `call` or `apply`.
+
+			var obj = { boundedPlusTwo: boundedAddPlusTwo };
+			obj.boundedPlusTwo(4); // `this` is still computation1.
+			// Even though method is called on obj, computation1 after call: { result: 15 }
+
+			var computation2 = { result: 0 };
+			boundedAdd.call(computation2, 1, 2);
+			// `this` is still computation1 even though context passed to call is computation2
+			// computation1 after call: { result: 18 }
+
+
+	</script>
+</body>
+</html>
