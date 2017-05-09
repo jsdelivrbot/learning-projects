@@ -7,7 +7,7 @@ const VideoList = (props) => {
 			<VideoListItem 
 				onVideoSelect={props.onVideoSelect}
 				key={video.etag} 
-				video={video} 
+				video={video}
 			/>
 		);
 	});
@@ -17,6 +17,6 @@ const VideoList = (props) => {
 			{videoItems}
 		</ul>
 	);
-}
+};
 
 export default VideoList;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const VideoDetail = ({video}) => {
+const VideoDetail = ({video}) => {	
 	if (!video) {
 		return <div>Loading...</div>;
 	}
@@ -14,7 +14,7 @@ const VideoDetail = ({video}) => {
 				<iframe className="embed-responsive-item" src={url}></iframe>
 			</div>
 			<div className="details">
-				<h5>{video.snippet.title}</h5>
+				<div>{video.snippet.title}</div>
 				<div>{video.snippet.description}</div>
 			</div>
 		</div>
