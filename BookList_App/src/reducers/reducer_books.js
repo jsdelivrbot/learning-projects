@@ -1,9 +1,8 @@
 export default function() {
 	return [
-		{ title: 'The Hunger Games', pages: 303 },
-		{ title: 'Memoirs of a Geisha', pages: 184 },
-		{ title: 'The Memory Keeper\'s Daughter', pages: 483 },
-		{ title: 'The Pursuit of Happyness', pages: 85 }
+		{ title: 'JavaScript: The Good Parts', pages: 1 },
+		{ title: 'Harry Potter', pages: 304 },
+		{ title: 'The Dark Tower', pages: 1038 },
+		{ title: 'Eloquent Ruby', pages: 48 }
 	];
 }
-
