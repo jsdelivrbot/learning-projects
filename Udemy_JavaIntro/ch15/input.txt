@@ -1,0 +1,10 @@
+root:x:0:3:0000-Admin(0000):/:/usr/bin/ksh
+daemon:x:1:12:0000-Admin(0000):/:
+bin:x:2:2:0000-Admin(0000):/usr/bin:
+sys:x:3:3:0000-Admin(0000):/:
+adm:x:4:4:0000-Admin(0000):/var/adm:
+uucp:x:5:5:0000-uucp(0000):/usr/lib/uucp:
+mail:x:6:6:Mail Processes:/etc/mail:
+robert:x:10250:130:Robert Smith:/users/robert:/usr/bin/ksh
+lovely:x:16166:130:Bruce Lovely:/users/lovely:/usr/bin/ksh
+brian:x:1206:1030:Brian Beatty:/users/brian:/usr/bin/ksh

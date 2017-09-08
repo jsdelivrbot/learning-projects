@@ -1,0 +1,38 @@
+6567, 'Mike', 'Hodges', 'department manager', 'SM', NULL, '04-FEB-90', 64000.00
+6863, 'Bob', 'Taylor', 'account manager', 'SM', 6567, '05-JUL-97', 49000.00
+6892, 'Robert', 'Zehr', 'manager', 'SM', 6567, '15-JUN-95', 41000.00
+7218, 'Tom', 'Mundt', 'sales assistant', 'SM', 6892, '14-JAN-93', 45000.00
+7285, 'Michael', 'Ann', 'account manager', 'SM', 6892, '18-JAN-88', 48000.00
+8099, 'Mark', 'Sallee', 'account manager', 'SM', 6892, '01-JAN-88', 41000.00
+8084, 'Leigh', 'Scherer', 'manager', 'SM', 6892, '22-FEB-89', 50000.00
+8080, 'Jon', 'Scholz', 'sales assistant', 'SM', 8084, '07-JAN-93', 49000.00
+7966, 'Barbara', 'Walker', 'recruiter', 'HR', 8053, '20-DEC-95', 40000.00
+7846, 'Anthony', 'Goffi', 'recruiter', 'HR', 8053, '15-JUN-91', 52000.00
+7644, 'Cliff', 'Absher', 'human resource specialist', 'HR', 8053, '13-MAR-94', 47000.00
+8107, 'Bonnie', 'Roth', 'clerk', 'SH', 7502, '21-JUL-90', 52000.00
+7445, 'Julie', 'Sussenbach', 'clerk', 'SH', 7502, '20-AUG-91', 40000.00
+7223, 'Glen', 'Paul', 'department manager', 'AC', NULL, '24-JAN-93', 70000.00
+7088, 'Dave', 'McKillip', 'bookkeeper', 'AC', 7223, '19-APR-89', 44000.00
+6881, 'Susan', 'Langley', 'department manager', 'AD', NULL, '06-MAR-96', 65000.00
+6783, 'Chakradhar', 'Adair', 'office manager', 'AD', 6881, '01-MAR-90', 53000.00
+6650, 'Terry', 'Slickers', 'receptionist', 'AD', 6881, '16-MAR-93', 46000.00
+8222, 'Robert', 'Moore', 'assistant', 'AD', 6881, '13-JUL-92', 45000.00
+8339, 'Jack', 'Kent', 'department manager', 'CS', NULL, '19-DEC-95', 76000.00
+8373, 'Thomas', 'Jacoby', 'customer service rep', 'CS', 8339, '22-MAY-94', 48000.00
+8511, 'Darcy', 'Drera', 'customer service rep', 'CS', 8339, '07-JUN-94', 49000.00
+8578, 'Jim', 'Cheffy', 'customer service rep', 'CS', 8339, '07-JAN-95', 48000.00
+8741, 'Ashraf', 'Kindvall', 'customer service rep', 'CS', 8339, '23-JUN-92', 51000.00
+8795, 'Lisa', 'Stewart', 'manager', 'CS', 8339, '01-FEB-93', 49000.00
+8804, 'James', 'Gaughan', 'customer service rep', 'CS', 8795, '11-JUN-89', 47000.00
+8798, 'Philip', 'Osen', 'customer service rep', 'CS', 8795, '01-APR-90', 43000.00
+9318, 'Kelly', 'Tatman', 'customer service rep', 'CS', 8795, '20-JAN-97', 50000.00
+9018, 'Dick', 'Lillrose', 'qa', 'RD', 9188, '19-JAN-90', 44000.00
+8981, 'Joseph', 'Paris', 'engineer', 'RD', 9188, '12-AUG-96', 47000.00
+8785, 'Lauretta', 'Abedzadeh', 'qa', 'RD', 9188, '28-MAR-88', 54000.00
+8674, 'Sue', 'Ahl', 'engineer', 'RD', 9188, '24-JUL-92', 42000.00
+8478, 'Tony', 'Filipowicz', 'developer', 'RD', 8571, '23-FEB-94', 53000.00
+9894, 'Gloria', 'Harbert', 'engineer', 'RD', 8571, '27-NOV-89', 50000.00
+9883, 'Warren', 'Carson', 'developer', 'RD', 8571, '08-JAN-92', 49000.00
+9779, 'Eleanor', 'Hill', 'qa', 'RD', 8571, '15-JAN-93', 44000.00
+9765, 'Dave', 'Marsh', 'developer', 'RD', 8571, '25-NOV-89', 51000.00
+9683, 'Robert', 'Miller', 'manager', 'RD', 8571, '27-NOV-95', 40000.00

@@ -1,0 +1,5 @@
+solutions\Name.java:3: class MyName is public, should be declared in 
+a file named MyName.java
+public class MyName {
+       ^
+1 error
