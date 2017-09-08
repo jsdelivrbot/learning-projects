@@ -1,5 +1,23 @@
+import _ from 'lodash';
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
+import {connect} from 'react-redux';
+import {createPost} from '../actions';
+
+const FIELDS = {
+	title: { 
+		type: 'input',
+		label: 'Title for Post'
+	},
+	categories: { 
+		type: 'input',
+		label: 'Enter some categories for this post'
+	},
+	content: { 
+		type: 'textarea',
+		label: 'Post Contents'
+	}
+};
 
 class PostsNew extends Component {
 	renderField(field) {
@@ -23,7 +41,9 @@ class PostsNew extends Component {
 	}
 
 	onSubmit(values) {
-
+		this.props.createPost(values, () => {
+			this.props.history.push('/');
+		});
 	}
 
 	render() {
@@ -60,22 +80,17 @@ class PostsNew extends Component {
 function validate(values) {
 	const errors = {};
 
-	if (!values.title || values.title.length < 3) {
-		errors.title = 'Enter a title that is at least 3 characters.';
-	} 
-
-	if (!values.categories) {
-		errors.categories = 'Enter some categories.';
-	} 
-
-	if (!values.content) {
-		errors.content = 'Enter some content.';
-	}
+	_.each(FIELDS, (type, field) => {
+		if (!values[field]) {
+			errors[field] = `Enter ${field}`;
+		}
+	});
 
 	return errors;
 }
 
 export default reduxForm({
 	validate,
-	form: 'PostsNewForm'
-})(PostsNew);
+	form: 'PostsNewForm',
+	fields: _.keys(FIELDS)
+})(connect(null, {createPost})(PostsNew));
